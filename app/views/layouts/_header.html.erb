@@ -1,0 +1,26 @@
+<div class= "container mx-auto">
+  <div class= "row mx-auto">
+    <div class= "col-auto">
+      <%= link_to posts_path, class: "text-light nav-link font-raleway" do %>
+        <i class= "fas fa-home fa-2x"></i> Timeline
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="col-auto">
+  <%= link_to users_path, class: "text-light nav-link font-raleway" do%>
+    <i class="fas fa-users fa-2x"></i>Find Friends
+  <% end %>
+</div>
+
+<ul class="navbar-nav ml-auto">
+  <% if user_signed_in? %>
+    <li class="nav-item">
+      <button class="text-white btn btn-secondary", data-toggle="modal" data-target="#noticeModal">
+        <i class="fas fa-bell"></i>
+        <%= current_user.notifications.count %>
+      </button>
+    </li>
+  <% end %>
+</ul>
