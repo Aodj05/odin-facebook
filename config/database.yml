@@ -20,8 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: justin
-  password: <%= ENV['odin-facebook_DATABASE_PASSWORD'] %>
+  #username: justin
+  #password: <%= ENV['odin-facebook_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -32,9 +32,11 @@ development:
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
   #username: odin_facebook
+  #username: <%=ENV['USERNAME']%> 
 
   # The password associated with the postgres role (username).
-  #password:
+  #password: 
+  #password: <%=ENV['PASSWORD']%>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -60,6 +62,10 @@ development:
 test:
   <<: *default
   database: odin_facebook_test
+  host: localhost
+  port: 5432
+  username: <%=ENV['USERNAME']%> 
+  password: <%=ENV['PASSWORD']%> 
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

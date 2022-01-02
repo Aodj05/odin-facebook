@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :posts
   has_many :likes, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -30,9 +30,11 @@ class User < ApplicationRecord
         our_posts << p
       end
     end
+
     posts.each do |p|
       our_posts << p
     end
+
     our_posts
   end
 
